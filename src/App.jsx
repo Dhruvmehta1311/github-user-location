@@ -6,7 +6,7 @@ function App() {
   const [inputVal, setInputVal] = useState("");
 
   function inputValue(e) {
-    setInputVal(e.target.value);
+    setInputVal(e.target.value.split(" ").join("-"));
   }
 
   function handleSubmit(e) {
