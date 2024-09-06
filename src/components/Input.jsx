@@ -11,7 +11,6 @@ const Input = ({ inputValue, inputVal }) => {
         type="text"
         placeholder="Enter Username Here"
       />
-      <p className="text-white bg-red-700">{inputVal}</p>
     </>
   );
 };
