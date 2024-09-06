@@ -1,16 +1,25 @@
 import { useState } from "react";
 import Button from "./components/Button";
 import Input from "./components/Input";
+import FetchData from "./components/FetchData";
 
 function App() {
   const [inputVal, setInputVal] = useState("");
-
+  const [userData, setUserData] = useState(null);
   function inputValue(e) {
     setInputVal(e.target.value.split(" ").join("-"));
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
+    const api = `https://api.github.com/search/users?q=location:${inputVal}`;
+    try {
+      const response = await fetch(api);
+      const data = await response.json();
+      setUserData(data); // Store the fetched data in the state
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   }
 
   return (
@@ -26,6 +35,9 @@ function App() {
           <Input inputVal={inputVal} inputValue={inputValue} />
           <Button />
         </form>
+        <div className="max-w-full w-[96%]">
+          <FetchData inputVal={inputVal} userData={userData} />
+        </div>
       </div>
     </>
   );
