@@ -13,7 +13,7 @@ const FetchData = ({ userData }) => {
         <div className="">
           <img
             src={user.avatar_url}
-            className="h-[180px] md:h-[250px] rounded-full"
+            className="h-[180px] md:h-[250px] rounded-full cursor-pointer"
             alt=""
           />
           <h2 className="text-center">{user.login}</h2>
