@@ -1,5 +1,10 @@
-const Button = () => {
-  return <button className="px-12 rounded py-2 bg-blue-700">Search</button>;
+/* eslint-disable react/prop-types */
+const Button = ({ children, className, onClick }) => {
+  return (
+    <button className={className} onClick={onClick}>
+      {children}
+    </button>
+  );
 };
 
 export default Button;
