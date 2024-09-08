@@ -4,7 +4,7 @@ import FetchData from "./components/FetchData";
 import Input from "./components/input";
 
 function App() {
-  const [inputVal, setInputVal] = useState("");
+  const [inputVal, setInputVal] = useState("India");
   const [userData, setUserData] = useState(null);
   const [pageNo, setPageNo] = useState(1);
   function inputValue(e) {
@@ -13,7 +13,7 @@ function App() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const api = `https://api.github.com/search/users?q=location:${inputVal}&page=${pageNo}&per_page=200`;
+    const api = `https://api.github.com/search/users?q=location:${inputVal}&page=${pageNo}&per_page=400`;
     try {
       const response = await fetch(api);
       const data = await response.json();
