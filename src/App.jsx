@@ -26,10 +26,10 @@ function App() {
 
   return (
     <>
-      <h1 className="font-josefin text-center bg-black text-white h-14 text-2xl">
-        Github Users Based on Location
-      </h1>
       <div className="bg-black min-h-screen text-white flex items-center justify-center flex-col gap-4 font-josefin">
+        <h1 className="font-josefin text-center bg-black text-white h-14 text-2xl">
+          Github Users Based on Location
+        </h1>
         <form
           onSubmit={handleSubmit}
           className="flex gap-4 flex-col items-center justify-center  max-w-[800px] w-[95%] mx-auto"

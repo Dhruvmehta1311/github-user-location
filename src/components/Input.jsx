@@ -9,7 +9,7 @@ const Input = ({ inputValue, inputVal }) => {
         onChange={inputValue}
         className="h-[40px] px-4 rounded placeholder:text-lg max-w-[500px] w-[98%] mx-auto text-black"
         type="text"
-        placeholder="Enter Username Here"
+        placeholder="Enter Location Here"
       />
     </>
   );
