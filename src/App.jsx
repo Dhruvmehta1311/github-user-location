@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "./components/Button";
 import FetchData from "./components/FetchData";
-import Input from "./components/input";
+import Input from "./components/Input";
 
 function App() {
   const [inputVal, setInputVal] = useState("India");
