@@ -17,7 +17,8 @@ function App() {
     try {
       const response = await fetch(api);
       const data = await response.json();
-      setUserData(data); // Store the fetched data in the state
+      setUserData(data);
+      console.log(data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
