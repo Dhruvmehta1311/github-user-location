@@ -5,19 +5,32 @@ import Input from "./components/Input";
 
 function App() {
   const [inputVal, setInputVal] = useState("India");
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState([]);
   const [pageNo, setPageNo] = useState(1);
+  const [perPage, setPerPage] = useState(100);
+  const [showLoadMore, setShowLoadMore] = useState(false)
+  
+
   function inputValue(e) {
     setInputVal(e.target.value.split(" ").join("-"));
   }
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const api = `https://api.github.com/search/users?q=location:${inputVal}&page=${pageNo}&per_page=400`;
+    getUserData()
+  }
+
+  async function getUserData(){
+    setShowLoadMore(false)
+    setPageNo(pageNo => pageNo + 1)
+    setPerPage(perPage + 100);
+
+    const api = `https://api.github.com/search/users?q=location:${inputVal}&page=${pageNo}&per_page=${perPage}`;
     try {
       const response = await fetch(api);
       const data = await response.json();
-      setUserData(data);
+      setUserData((prevData) => [...prevData, ...data.items]);
+      setShowLoadMore(true)
       console.log(data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -46,6 +59,10 @@ function App() {
             handleSubmit={handleSubmit}
           />
         </div>
+        {!showLoadMore && <p className="text-center">What Are you waiting for !?</p>}
+        {
+          showLoadMore ? <Button className="px-12 py-3 bg-blue-600 rounded" onClick={getUserData}>Load More</Button> : null
+        }
       </div>
     </>
   );
