@@ -40,7 +40,7 @@ function App() {
 
   return (
     <>
-      <div className="bg-black min-h-screen text-white flex items-center justify-center flex-col gap-4 font-josefin">
+      <div className="py-4 bg-black min-h-screen text-white flex items-center justify-center flex-col gap-4 font-josefin">
         <h1 className="font-josefin text-center bg-black text-white h-14 text-2xl">
           Github Users Based on Location
         </h1>
