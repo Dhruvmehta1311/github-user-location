@@ -16,6 +16,7 @@ function App() {
   }
 
   async function handleSubmit(e) {
+    setUserData([])
     e.preventDefault();
     getUserData()
   }
