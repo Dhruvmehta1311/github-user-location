@@ -2,6 +2,7 @@ import { useState } from "react";
 import Button from "./components/Button";
 import FetchData from "./components/FetchData";
 import Input from "./components/Input";
+import NavBar from "./components/NavBar";
 
 function App() {
   const [inputVal, setInputVal] = useState("India");
@@ -38,6 +39,7 @@ function App() {
   }
   return (
     <>
+    <NavBar />
       <div className="py-4 bg-black min-h-screen text-white flex items-center flex-col gap-4 font-josefin">
         <h1 className="font-josefin text-center bg-black text-white h-14 text-2xl">
           Github Users Based on Location
