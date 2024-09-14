@@ -8,22 +8,21 @@ function App() {
   const [userData, setUserData] = useState([]);
   const [pageNo, setPageNo] = useState(1);
   const [perPage, setPerPage] = useState(100);
-  const [showLoadMore, setShowLoadMore] = useState(false)
-  
+  const [showLoadMore, setShowLoadMore] = useState(false);
 
   function inputValue(e) {
     setInputVal(e.target.value.split(" ").join("-"));
   }
 
   async function handleSubmit(e) {
-    setUserData([])
+    setUserData([]);
     e.preventDefault();
-    getUserData()
+    getUserData();
   }
 
-  async function getUserData(){
-    setShowLoadMore(false)
-    setPageNo(pageNo => pageNo + 1)
+  async function getUserData() {
+    setShowLoadMore(false);
+    setPageNo((pageNo) => pageNo + 1);
     setPerPage(perPage + 100);
 
     const api = `https://api.github.com/search/users?q=location:${inputVal}&page=${pageNo}&per_page=${perPage}`;
@@ -31,16 +30,15 @@ function App() {
       const response = await fetch(api);
       const data = await response.json();
       setUserData((prevData) => [...prevData, ...data.items]);
-      setShowLoadMore(true)
+      setShowLoadMore(true);
       console.log(data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   }
-
   return (
     <>
-      <div className="py-4 bg-black min-h-screen text-white flex items-center justify-center flex-col gap-4 font-josefin">
+      <div className="py-4 bg-black min-h-screen text-white flex items-center flex-col gap-4 font-josefin">
         <h1 className="font-josefin text-center bg-black text-white h-14 text-2xl">
           Github Users Based on Location
         </h1>
@@ -60,10 +58,17 @@ function App() {
             handleSubmit={handleSubmit}
           />
         </div>
-        {!showLoadMore && <p className="text-center">What Are you waiting for !?</p>}
-        {
-          showLoadMore ? <Button className="px-12 py-3 bg-blue-600 rounded" onClick={getUserData}>Load More</Button> : null
-        }
+        {!showLoadMore && (
+          <p className="text-center">What Are you waiting for !?</p>
+        )}
+        {showLoadMore ? (
+          <Button
+            className="px-12 py-3 bg-blue-600 rounded"
+            onClick={getUserData}
+          >
+            Load More
+          </Button>
+        ) : null}
       </div>
     </>
   );
